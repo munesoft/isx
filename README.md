@@ -10,6 +10,7 @@ A tiny, fast, zero-dependency type-checking and validation library for JavaScrip
 
 ---
 
+
 ## 🚀 Why isx?
 
 The npm ecosystem has **hundreds** of tiny packages like `is-odd`, `is-array`, `is-number`, `is-plain-object`, and `kind-of`. They are:
