@@ -4,12 +4,14 @@
 
 A tiny, fast, zero-dependency type-checking and validation library for JavaScript and TypeScript. Replace dozens of fragmented `is-*` micro-packages with one unified, tree-shakable utility.
 
-[![npm](https://img.shields.io/npm/v/@munesoft/isx)](https://www.npmjs.com/package/@munesoft/isx)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/@munesoft/isx)](https://bundlephobia.com/package/@munesoft/isx)
-[![license](https://img.shields.io/npm/l/@munesoft/isx)](./LICENSE)
+![version](https://img.shields.io/badge/version-1.101.11-blue)
+![license](https://img.shields.io/badge/license-MIT-green)
+![dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
+![tests](https://img.shields.io/badge/tests-97%20passing-brightgreen)
+![bundle](https://img.shields.io/badge/bundle-8.5kB-blue)
+![node](https://img.shields.io/badge/node-%3E%3D14-brightgreen)
 
 ---
-
 
 ## 🚀 Why isx?
 
@@ -84,17 +86,17 @@ is.primitive(value) // value !== Object(value)
 ### Numbers
 
 ```js
-is.integer(10)     // true  — Math.floor(v) === v
-is.float(1.5)      // true  — not an integer
-is.odd(3)          // true  — bitwise fast path
-is.even(4)         // true  — bitwise fast path
-is.nan(NaN)        // true
-is.positive(1)     // true
-is.negative(-1)    // true
-is.finite(1)       // true
+is.integer(10)        // true  — Math.floor(v) === v
+is.float(1.5)         // true  — not an integer
+is.odd(3)             // true  — bitwise fast path
+is.even(4)            // true  — bitwise fast path
+is.nan(NaN)           // true
+is.positive(1)        // true
+is.negative(-1)       // true
+is.finite(1)          // true
 is.infinite(Infinity) // true
-is.safeInteger(42) // true
-is.zero(0)         // true
+is.safeInteger(42)    // true
+is.zero(0)            // true
 ```
 
 ### Objects
@@ -141,11 +143,11 @@ is.falsy(value)      // !value
 ### Collections
 
 ```js
-is.empty([])            // true
-is.empty('')            // true
-is.empty({})            // true
-is.empty(new Map())     // true
-is.notEmpty([1, 2])     // true
+is.empty([])         // true
+is.empty('')         // true
+is.empty({})         // true
+is.empty(new Map())  // true
+is.notEmpty([1, 2])  // true
 ```
 
 ### Deep Equality
@@ -202,13 +204,13 @@ result.errors  // string[] — one message per failing field
 
 Schema rule types:
 
-| Rule               | Behaviour                                |
-|--------------------|------------------------------------------|
-| `'string'`         | type name match via `is.type()`          |
-| `'number'`         | same — works for all type names          |
-| `Date` (constructor) | `instanceof Date`                      |
-| `(v) => boolean`   | custom validator function                |
-| `{ … }` (nested)   | deep sub-schema (requires `{ deep: true }`) |
+| Rule                 | Behaviour                                        |
+|----------------------|--------------------------------------------------|
+| `'string'`           | type name match via `is.type()`                  |
+| `'number'`           | same — works for all type names                  |
+| `Date` (constructor) | `instanceof Date`                                |
+| `(v) => boolean`     | custom validator function                        |
+| `{ … }` (nested)     | deep sub-schema (requires `{ deep: true }`)      |
 
 ```js
 // Deep schema
@@ -231,8 +233,8 @@ const validateUser = is.schema({
   name: 'string',
 });
 
-validateUser({ id: 1, name: 'Alice' })   // { valid: true, errors: [] }
-validateUser({ id: 'oops' })             // { valid: false, errors: ['...'] }
+validateUser({ id: 1, name: 'Alice' })  // { valid: true, errors: [] }
+validateUser({ id: 'oops' })            // { valid: false, errors: ['...'] }
 ```
 
 ### Custom Validators
@@ -244,8 +246,8 @@ is.extend('email', (v) =>
   typeof v === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
 );
 
-is.email('user@example.com')    // true
-is('bad').email()               // false
+is.email('user@example.com')         // true
+is('bad').email()                    // false
 is.assert.email('user@example.com')  // passes
 ```
 
@@ -280,27 +282,27 @@ import is from '@munesoft/isx';
 import { isString, isNumber } from '@munesoft/isx';
 
 // Sub-path imports
-import { isOdd, isEven } from '@munesoft/isx/number';
-import { isPlainObject } from '@munesoft/isx/object';
-import { isString }      from '@munesoft/isx/string';
+import { isOdd, isEven }   from '@munesoft/isx/number';
+import { isPlainObject }   from '@munesoft/isx/object';
+import { isString }        from '@munesoft/isx/string';
 ```
 
 ---
 
 ## 🆚 Comparison
 
-| Feature             | `is-*` micro-packages | `@munesoft/isx` |
-|---------------------|----------------------|-----------------|
-| Unified API         | ❌ one package per check | ✅ everything in one |
-| Zero dependencies   | ❌ chains of deps    | ✅ none          |
-| Tree-shakable       | ❌ mostly not        | ✅ yes           |
-| Deep equality       | ❌ separate package  | ✅ built-in      |
-| Schema validation   | ❌ no                | ✅ built-in      |
-| Assertion mode      | ❌ no                | ✅ built-in      |
-| Custom validators   | ❌ no                | ✅ `is.extend()` |
-| Functional style    | ❌ no                | ✅ `is(v).type()`|
-| Browser + Node.js   | ⚠️ varies           | ✅ yes           |
-| Performance         | ⚠️ varies           | ✅ optimized     |
+| Feature              | `is-*` micro-packages    | `@munesoft/isx`          |
+|----------------------|--------------------------|--------------------------|
+| Unified API          | ❌ one package per check  | ✅ everything in one      |
+| Zero dependencies    | ❌ chains of deps         | ✅ none                   |
+| Tree-shakable        | ❌ mostly not             | ✅ yes                    |
+| Deep equality        | ❌ separate package       | ✅ built-in               |
+| Schema validation    | ❌ no                     | ✅ built-in               |
+| Assertion mode       | ❌ no                     | ✅ built-in               |
+| Custom validators    | ❌ no                     | ✅ `is.extend()`          |
+| Functional style     | ❌ no                     | ✅ `is(v).type()`         |
+| Browser + Node.js    | ⚠️ varies                | ✅ yes                    |
+| Performance          | ⚠️ varies                | ✅ optimized              |
 
 ---
 
