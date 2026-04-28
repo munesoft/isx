@@ -1,6 +1,6 @@
 {
   "name": "@munesoft/isx",
-  "version": "1.0.0",
+  "version": "1.101.10",
   "description": "Tiny, fast, unified type-checking and validation library. Replace dozens of is-* packages.",
   "type": "module",
   "main": "./src/index.js",
@@ -53,6 +53,7 @@
     "string.js",
     "number.js",
     "object.js",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ]
 }
