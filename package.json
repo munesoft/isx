@@ -1,0 +1,58 @@
+{
+  "name": "@munesoft/isx",
+  "version": "1.0.0",
+  "description": "Tiny, fast, unified type-checking and validation library. Replace dozens of is-* packages.",
+  "type": "module",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./string": {
+      "import": "./string.js"
+    },
+    "./number": {
+      "import": "./number.js"
+    },
+    "./object": {
+      "import": "./object.js"
+    }
+  },
+  "scripts": {
+    "test": "node tests/index.test.js",
+    "bench": "node benchmarks/bench.js"
+  },
+  "keywords": [
+    "type-checking",
+    "is-array",
+    "is-number",
+    "is-string",
+    "is-odd",
+    "is-plain-object",
+    "kind-of",
+    "validation",
+    "type-check",
+    "is",
+    "typeof"
+  ],
+  "author": "munesoft",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/munesoft/isx.git"
+  },
+  "homepage": "https://github.com/munesoft/isx#readme",
+  "bugs": {
+    "url": "https://github.com/munesoft/isx/issues"
+  },
+  "files": [
+    "src/",
+    "string.js",
+    "number.js",
+    "object.js",
+    "README.md"
+  ]
+}
